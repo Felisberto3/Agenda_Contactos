@@ -23,6 +23,16 @@ public class AgendaModel {
         }
     }
 
+    public static Contact get(String telefone) throws JsonIOException, IOException {
+        for (Contact contact : allContacts()) {
+            if (contact.getTelefone().equals(telefone)) {
+                return contact;
+            }
+        }
+
+        return null;
+    }
+
     public static List<Contact> allContacts() throws IOException, JsonIOException, IOException {
         createFile();
         ArrayList<Contact> contacts = new ArrayList<>();

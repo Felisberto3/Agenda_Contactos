@@ -28,7 +28,9 @@ public class MainManu {
         } else if (choose == 2) {
             agendaController.addContact(scan);
         } else if (choose == 3) {
-            // agendaController.
+            agendaController.updateContacts(scan);
+        } else if (choose == 4) {
+            agendaController.deleteContact(scan);
         }
     }
 
