@@ -71,13 +71,15 @@ public class AgendaModel {
         return true;
     }
 
-    // public static boolean update(String telefone, Contact contact) throws
-    // JsonIOException, IOException {
-    // List<Contact> contacts = allContacts();
-    // for (int i = 0; i < contacts.size(); i++) {
+    public static boolean update(String telefone, Contact contact) throws JsonIOException, IOException {
+        List<Contact> contacts = allContacts();
+        for (int i = 0; i < contacts.size(); i++) {
+            if (contacts.get(i).getTelefone().equals(telefone)) {
+                contacts.set(i, contact);
+            }
+        }
 
-    // }
-
-    // return true;
-    // }
+        save(contacts);
+        return true;
+    }
 }

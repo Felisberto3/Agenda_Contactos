@@ -11,8 +11,10 @@ public class App {
 
         // AgendaModel.save(null);
 
-        AgendaModel.delete("955371762");
+        // AgendaModel.delete("955371762");
         // System.out.println(contact);
+
+        AgendaModel.update("925795149", new Contact("925795149", "Jose Goncalves", "Canoquena", "ganca@gmail.com"));
 
     }
 }
