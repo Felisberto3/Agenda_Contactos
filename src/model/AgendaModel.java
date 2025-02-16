@@ -56,5 +56,28 @@ public class AgendaModel {
         return true;
     }
 
-    // public static boolean delete()
+    public static boolean delete(String telefone) throws JsonIOException, IOException {
+        List<Contact> contacts = allContacts();
+
+        for (int i = 0; i < contacts.size(); i++) {
+            if (contacts.get(i).getTelefone().equals(telefone)) {
+                contacts.remove(i);
+                break;
+            }
+        }
+
+        save(contacts);
+
+        return true;
+    }
+
+    // public static boolean update(String telefone, Contact contact) throws
+    // JsonIOException, IOException {
+    // List<Contact> contacts = allContacts();
+    // for (int i = 0; i < contacts.size(); i++) {
+
+    // }
+
+    // return true;
+    // }
 }
