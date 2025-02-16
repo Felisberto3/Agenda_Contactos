@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 
 import model.AgendaModel;
 import model.Contact;
+import view.MainManu;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -14,7 +15,9 @@ public class App {
         // AgendaModel.delete("955371762");
         // System.out.println(contact);
 
-        AgendaModel.update("925795149", new Contact("925795149", "Jose Goncalves", "Canoquena", "ganca@gmail.com"));
+        // AgendaModel.update("925795149", new Contact("925795149", "Jose Goncalves",
+        // "Canoquena", "ganca@gmail.com"));
 
+        MainManu.showLista();
     }
 }
