@@ -44,15 +44,25 @@ public class AgendaModel {
         return contacts;
     }
 
-    public static boolean save(List<Contact> contacts) throws IOException {
+    private static boolean writer(List<Contact> contacts) throws IOException {
         try (FileWriter writer = new FileWriter(path.toString())) {
             gson.toJson(contacts, writer);
-            System.out.println("Salvo com sucesso!");
+
         } catch (IOException e) {
             throw new IOException("Error: Ao escrever na file, " + path);
         } catch (JsonIOException e) {
             throw new JsonIOException("Error: transformar em salvar em json na file, " + path);
         }
+        return true;
+    }
+
+    public static boolean save(Contact contact) throws JsonIOException, IOException {
+
+        List<Contact> contacts = allContacts();
+        contacts.add(contact);
+
+        writer(contacts);
+
         return true;
     }
 
@@ -66,20 +76,22 @@ public class AgendaModel {
             }
         }
 
-        save(contacts);
+        writer(contacts);
 
         return true;
     }
 
     public static boolean update(String telefone, Contact contact) throws JsonIOException, IOException {
+
         List<Contact> contacts = allContacts();
+
         for (int i = 0; i < contacts.size(); i++) {
-            if (contacts.get(i).getTelefone().equals(telefone)) {
+            if (contacts.get(i).getTelefone().equals(telefone))
                 contacts.set(i, contact);
-            }
         }
 
-        save(contacts);
+        writer(contacts);
+
         return true;
     }
 }
