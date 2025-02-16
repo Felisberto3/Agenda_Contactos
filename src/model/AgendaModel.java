@@ -1,6 +1,7 @@
 package model;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -43,4 +44,17 @@ public class AgendaModel {
         return contacts;
     }
 
+    public static boolean save(List<Contact> contacts) throws IOException {
+        try (FileWriter writer = new FileWriter(path.toString())) {
+            gson.toJson(contacts, writer);
+            System.out.println("Salvo com sucesso!");
+        } catch (IOException e) {
+            throw new IOException("Error: Ao escrever na file, " + path);
+        } catch (JsonIOException e) {
+            throw new JsonIOException("Error: transformar em salvar em json na file, " + path);
+        }
+        return true;
+    }
+
+    // public static boolean delete()
 }
