@@ -38,6 +38,11 @@ public class AgendaController {
         System.out.print("Email: ");
         String email = scan.next();
 
+        if (AgendaModel.get(contact) instanceof Contact) {
+            System.out.println("Numero de telefone ja existe. Tente escrever outro");
+            return;
+        }
+
         Contact newContact = new Contact(contact, firstNome, surname, email);
 
         if (AgendaModel.save(newContact))
@@ -51,9 +56,11 @@ public class AgendaController {
 
         String telefone = scan.next();
 
-        AgendaModel.delete(telefone);
+        if (AgendaModel.delete(telefone)) {
+            System.out.println("CONTACTO DELETADO COM SUCESSO ✨✨✨");
+        }
 
-        System.out.println("CONTACTO DELETADO COM SUCESSO ✨✨✨");
+        System.out.println("Numero Informado nao existe");
     }
 
     public void updateContacts(Scanner scan) throws JsonIOException, IOException {
@@ -97,5 +104,9 @@ public class AgendaController {
 
         System.out.println("SALVO COM SUCESSO ✨✨✨");
 
+    }
+
+    private boolean validarCampos(String field, String value) {
+        return true;
     }
 }

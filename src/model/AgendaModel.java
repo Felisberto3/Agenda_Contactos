@@ -82,13 +82,13 @@ public class AgendaModel {
         for (int i = 0; i < contacts.size(); i++) {
             if (contacts.get(i).getTelefone().equals(telefone)) {
                 contacts.remove(i);
-                break;
+                writer(contacts);
+                return true;
             }
         }
 
-        writer(contacts);
+        return false;
 
-        return true;
     }
 
     public static boolean update(String telefone, Contact contact) throws JsonIOException, IOException {

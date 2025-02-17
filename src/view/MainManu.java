@@ -31,6 +31,11 @@ public class MainManu {
             agendaController.updateContacts(scan);
         } else if (choose == 4) {
             agendaController.deleteContact(scan);
+        } else if (choose == 0) {
+            System.exit(0);
+        } else {
+            System.out.println("LEIA NOVAMENTE AS ESCOLHAS");
+            firstMenu();
         }
     }
 

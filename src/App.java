@@ -1,5 +1,7 @@
 import java.io.IOException;
 import com.google.gson.JsonIOException;
+
+import model.Contact;
 import view.MainManu;
 
 public class App {
