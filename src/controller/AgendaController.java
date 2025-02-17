@@ -25,18 +25,22 @@ public class AgendaController {
         System.out.println("NOTA: Para adicionar contactos voçê, informe os seguintes dados. \n");
         System.out.print("Primeiro Nome: ");
         String firstNome = scan.next();
+        validarCampos("firstNome", firstNome);
         System.out.println();
 
         System.out.print("Sobrenome: ");
         String surname = scan.next();
+        validarCampos("surname", surname);
         System.out.println();
 
         System.out.print("Telefone: ");
         String contact = scan.next();
+        validarCampos("telefone", contact);
         System.out.println();
 
         System.out.print("Email: ");
         String email = scan.next();
+        validarCampos("email", email);
 
         if (AgendaModel.get(contact) instanceof Contact) {
             System.out.println("Numero de telefone ja existe. Tente escrever outro");
@@ -106,7 +110,24 @@ public class AgendaController {
 
     }
 
-    private boolean validarCampos(String field, String value) {
+    public boolean validarCampos(String field, String value) {
+
+        if (field.equals("telefone")) {
+
+            if (!(value.charAt(0) == '9' && value.trim().length() == 9)) {
+                throw new IllegalArgumentException("O Primeiro numero deve ser numero 9 e deve conter 9 digitos");
+            }
+
+        } else if (field.equals("firstName") || field.equals("surname")) {
+            if (value.trim().length() < 3) {
+                throw new IllegalArgumentException("O " + field + " deve mais de tres caracteres ");
+            }
+        } else if (field.equals("email")) {
+            if (value.indexOf("@gmail.com") < 1) {
+                throw new IllegalArgumentException("O " + field + " deve conter ****.@gmail.com ");
+
+            }
+        }
         return true;
     }
 }
