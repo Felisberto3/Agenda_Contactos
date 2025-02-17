@@ -1,14 +1,11 @@
 package view;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
 
 import com.google.gson.JsonIOException;
 
 import controller.AgendaController;
-import model.AgendaModel;
-import model.Contact;
 
 public class MainManu {
     AgendaController agendaController = new AgendaController();
